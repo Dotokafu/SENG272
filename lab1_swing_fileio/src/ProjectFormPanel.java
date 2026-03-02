@@ -23,12 +23,14 @@ public class  ProjectFormPanel extends JPanel{
 
         add(new JLabel("ProjectType"));
         add(new JComboBox<>());
-        
+
         add(new JLabel("StartDate"));
         add(new JTextField());
+        JButton SaveButton =new JButton("Save");
+        JButton ClearButton =new JButton("Clear");
+        add(SaveButton);
+        add(ClearButton);
 
-        add(new JButton("Save"));
-        add(new JButton("Clear"));
 
         
 

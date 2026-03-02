@@ -1,7 +1,7 @@
 package lab1_swing_fileio.src;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JPanel;
 
 
