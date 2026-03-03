@@ -3,15 +3,17 @@ package lab1_swing_fileio.src;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+import java.time.format.DateTimeFormatter;
 
 public class  ProjectFormPanel extends JPanel{
     public ProjectFormPanel(){
@@ -48,6 +50,37 @@ public class  ProjectFormPanel extends JPanel{
             String teamSize = (String) TeamSize.getSelectedItem();
             String projectType = (String) ProjectType.getSelectedItem();
             String startDate = StartDate.getText();
+            if(ProjectName.length() ==0  || TeamName.length() ==0 || startDate.length() == 0){
+                JOptionPane.showMessageDialog(null, "Please enter all the information");
+
+            }
+            else{
+                LocalDateTime current = LocalDateTime.now();
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
+                String formatedDateTime = current.format(format);
+                try (FileWriter writer =new FileWriter("projects.txt",true)){
+                    writer.write("=== Project Entry ===\n");
+                    writer.write("Project Name  : " + ProjectName +"\n");
+                    writer.write("Team Name     : " + TeamName +"\n");
+                    writer.write("Team Size     : " + teamSize +"\n");
+                    writer.write("Project Type  : " + projectType +"\n");
+                    writer.write("Start Date    : " + startDate +"\n");
+                    writer.write("RecordTime    : " + formatedDateTime + "\n");
+                    writer.write("====================\n");
+                }   
+                catch (IOException w) {
+                    System.out.println("An error occurred");
+                }
+            }
+
+
+        });
+        ClearButton.addActionListener(e->{
+            projectName.setText("");
+            Team.setText("");
+            TeamSize.setSelectedIndex(0);
+            ProjectType.setSelectedIndex(0);
+            StartDate.setText("");
         });
       
 
