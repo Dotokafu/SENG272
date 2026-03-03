@@ -67,6 +67,8 @@ public class  ProjectFormPanel extends JPanel{
                     writer.write("Start Date    : " + startDate +"\n");
                     writer.write("RecordTime    : " + formatedDateTime + "\n");
                     writer.write("====================\n");
+                    writer.close();
+                    JOptionPane.showMessageDialog(null, "Project is succesfully saved");
                 }   
                 catch (IOException w) {
                     System.out.println("An error occurred");
