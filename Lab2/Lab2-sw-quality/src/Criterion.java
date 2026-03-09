@@ -48,7 +48,7 @@ public class Criterion {
 
         public String toString() {
             String direction = higher_is_better ? "Higher is better" : "Lower is better";
-            return String.format("%s: %.1f %s -> Score: %.1f (%s)" ,name,unit,calculateScore(), direction);     
+            return String.format("%s: %.1f %s -> Score: %.1f (%s)" ,name,measured_value,unit,calculateScore(), direction);     
         }
 
 }
