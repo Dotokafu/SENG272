@@ -46,7 +46,10 @@ public class Criterion {
         public double getMeasuredValue(){ return measured_value; }
         public boolean isValueSet(){ return value_set; }
 
-
+        public String toString() {
+            String direction = higher_is_better ? "Higher is better" : "Lower is better";
+            return String.format("%s: %.1f %s -> Score: %.1f (%s)" ,name,unit,calculateScore(), direction);     
+        }
 
 }
 
