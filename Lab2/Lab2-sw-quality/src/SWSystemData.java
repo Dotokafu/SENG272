@@ -18,20 +18,20 @@ public class SWSystemData {
 
         SWSystem s = new SWSystem("ShopSphere", "Web", "3.2.1");
             QualityDimension funcSuit = new QualityDimension("Functional Suitability", "QC.FS", 25);
-                funcSuit.addCriterion(new Criterion("Functional Completeness Ratio", 50, true, 0, 100, "%"));
-                funcSuit.addCriterion(new Criterion("Functional Correctness Ratio", 50, true, 0, 100, "%"));
+                funcSuit.addCriterion(new Criterion("Functional Completeness Ratio", 50, true, 50, 100, "%"));
+                funcSuit.addCriterion(new Criterion("Functional Correctness Ratio", 50, true, 50, 100, "%"));
                 s.addDimension(funcSuit);
             QualityDimension reliability = new QualityDimension("Reliability", "QC.RE", 25);
                 reliability.addCriterion(new Criterion("Availability Ratio", 50, true, 95, 100, "%"));
                 reliability.addCriterion(new Criterion("Defect Density", 50, false, 0, 20, "defect/KLOC"));
                 s.addDimension(reliability);
             QualityDimension perfEffic = new QualityDimension("Performance Efficiency", "QC.PE", 25);
-                perfEffic.addCriterion(new Criterion("Response Time", 50, false, 100, 2000, "ms"));
-                perfEffic.addCriterion(new Criterion("CPU Utilisation Ratio", 50, false, 0, 100, "%"));
+                perfEffic.addCriterion(new Criterion("Response Time", 50, false, 100, 600, "ms"));
+                perfEffic.addCriterion(new Criterion("CPU Utilisation Ratio", 50, false, 0, 152, "%"));
                 s.addDimension(perfEffic);
             QualityDimension maintain = new QualityDimension("Maintainability", "QC.MA", 25);
-                maintain.addCriterion(new Criterion("Test Coverage Ratio", 50, true, 0, 100, "%"));
-                maintain.addCriterion(new Criterion("Cyclomatic Complexity", 50, false, 1, 30, "score"));
+                maintain.addCriterion(new Criterion("Test Coverage Ratio", 50, true, 30, 100, "%"));
+                maintain.addCriterion(new Criterion("Cyclomatic Complexity", 50, false, 1, 20, "score"));
                 s.addDimension(maintain);
         
 
