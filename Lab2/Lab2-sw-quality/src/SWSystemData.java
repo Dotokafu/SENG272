@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SWSSystemData {
+public class SWSystemData {
     public static HashMap<String, ArrayList<SWSystem>> getAllSystems() {
         HashMap<String, ArrayList<SWSystem>> map = new HashMap<>();
         ArrayList<SWSystem> webList = new ArrayList<>();
