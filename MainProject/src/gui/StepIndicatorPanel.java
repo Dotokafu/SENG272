@@ -14,7 +14,7 @@ public class StepIndicatorPanel extends JPanel {
     public StepIndicatorPanel(int currentStep) {
         this.currentStep = currentStep;
         setBackground(new Color(30, 30, 30));
-        setPreferredSize(new Dimension(0, 70));
+        setPreferredSize(new Dimension(0, 90));
     }
 
     public void setCurrentStep(int step) {
@@ -33,7 +33,7 @@ public class StepIndicatorPanel extends JPanel {
         int w = getWidth();
         int h = getHeight();
         int stepW = w / n;
-        int cy = h / 2 - 5;
+        int cy = h / 2 - 18;
         int r = 16;
 
         for (int i = 0; i < n; i++) {

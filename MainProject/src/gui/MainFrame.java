@@ -23,7 +23,8 @@ public class MainFrame extends JFrame {
 
         setTitle("ISO 15939 Measurement Process Simulator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 650);
+        setSize(1000, 700);
+        setMinimumSize(new Dimension(900, 600));
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
