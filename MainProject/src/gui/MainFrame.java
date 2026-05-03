@@ -63,8 +63,14 @@ public class MainFrame extends JFrame {
         if (step == 4) step4.onShow();
         if (step == 5) step5.onShow();
         if (step == 6) customPanel.onShow();
+        if (step == 6) stepIndicator.setCurrentStep(2);
 
+         if (step == 6) {
+        stepIndicator.setCurrentStep(2);
+        }else{
         stepIndicator.setCurrentStep(step);
+    }
+        
         cardLayout.show(cardPanel, String.valueOf(step));
     }
 }

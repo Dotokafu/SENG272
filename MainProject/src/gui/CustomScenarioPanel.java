@@ -7,6 +7,7 @@ import model.Scenario;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,32 +70,36 @@ public class CustomScenarioPanel extends BaseStepPanel {
             BorderFactory.createEmptyBorder(16, 20, 16, 20)
         ));
         form.setAlignmentX(LEFT_ALIGNMENT);
+        form.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 120));
 
         // Dimension name and coefficient row
         JPanel row1 = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
         row1.setBackground(new Color(30, 35, 55));
         row1.setAlignmentX(LEFT_ALIGNMENT);
 
-        dimNameField  = makeInputField("Dimension name e.g. Usability", 200);
-        dimCoeffField = makeInputField("Coefficient e.g. 25", 120);
+        dimNameField  = makeInputField("Dimension name e.g. Usability", 220);
+        dimCoeffField = makeInputField("Coefficient e.g. 25", 100);
 
         row1.add(makeFieldLabel("Dimension Name:"));
         row1.add(dimNameField);
-        row1.add(Box.createHorizontalStrut(10));
+        row1.add(Box.createHorizontalStrut(20));
         row1.add(makeFieldLabel("Coefficient:"));
         row1.add(dimCoeffField);
+
+        JPanel row2 = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        row2.setBackground(new Color(30, 35, 55));
+        row2.setAlignmentX(LEFT_ALIGNMENT);
 
         // Add dimension button
         JButton addDimBtn = makeNavButton("+ Add Dimension", true);
         addDimBtn.addActionListener(e -> addDimension());
+        row2.add(addDimBtn);
 
         form.add(row1);
         form.add(Box.createVerticalStrut(12));
+        form.add(row2);
 
-        JPanel btnRow = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        btnRow.setBackground(new Color(30, 35, 55));
-        btnRow.add(addDimBtn);
-        form.add(btnRow);
+        
 
         return form;
     }

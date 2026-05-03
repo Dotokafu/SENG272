@@ -59,10 +59,27 @@ public class StepIndicatorPanel extends JPanel {
             g2.setColor(Color.WHITE);
             g2.setFont(new Font("Arial", Font.BOLD, 12));
             FontMetrics fm = g2.getFontMetrics();
-            String label = done ? "✓" : String.valueOf(i + 1);
-            g2.drawString(label,
-                cx - fm.stringWidth(label) / 2,
-                cy + r + fm.getAscent() / 2 - 2);
+      
+            if (done) {
+            // Draw checkmark manually using lines
+            g2.setColor(Color.WHITE);
+            g2.setStroke(new BasicStroke(2.5f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+            int ckx = cx - 5;
+            int cky = cy + r;
+            g2.drawLine(ckx,     cky + 3,  ckx + 4, cky + 7);
+            g2.drawLine(ckx + 4, cky + 7,  ckx + 10, cky - 1);
+        } else {
+            g2.setColor(Color.WHITE);
+            g2.setFont(new Font("Arial", Font.BOLD, 12));
+            FontMetrics fm3 = g2.getFontMetrics();
+            String label = String.valueOf(i + 1);
+            int tx = cx - fm3.stringWidth(label) / 2;
+            int ty = cy + r + (fm3.getAscent() - fm3.getDescent()) / 2;
+            g2.drawString(label, tx, ty);
+        }
+
+
+
 
             // Step name below
             g2.setFont(new Font("Arial", active ? Font.BOLD : Font.PLAIN, 11));
