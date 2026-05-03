@@ -14,17 +14,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Dimension;
 import java.awt.*;
 
-public class Step3PlanPanel extends JPanel {
-    private AppState appState;
-    private MainFrame mainFrame;
+public class Step3PlanPanel extends BaseStepPanel {
+    
     private JPanel contentPanel;
 
     public Step3PlanPanel(AppState appState, MainFrame mainFrame) {
-        this.appState =appState;
-        this.mainFrame=mainFrame;
-
-        setBackground(new Color(20, 25, 40));
-        setLayout(new BorderLayout());
+        super(appState, mainFrame);
         buildUI();
     }
     private void buildUI() {

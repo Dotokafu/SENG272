@@ -11,9 +11,8 @@ import java.awt.*;
 
 import java.util.List;
 
-public class Step2DefinePanel extends JPanel {
-    private AppState appState;
-    private MainFrame mainFrame;
+public class Step2DefinePanel extends BaseStepPanel {
+    
 
     private ButtonGroup qualityGroup;
     private JRadioButton rbProduct;
@@ -27,11 +26,7 @@ public class Step2DefinePanel extends JPanel {
     private JPanel scenarioButtonPanel;
     
     public Step2DefinePanel(AppState appState, MainFrame mainFrame) {
-        this.appState = appState;
-        this.mainFrame = mainFrame;
-
-        setBackground(new Color(20, 25, 40));
-        setLayout(new BorderLayout());
+        super(appState,mainFrame);
         
         JPanel content = buildContent();
         JScrollPane scrollPane = new JScrollPane(content);
@@ -85,13 +80,7 @@ public class Step2DefinePanel extends JPanel {
 
         return content;
     }
-    private JLabel makeSectionLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Arial", Font.BOLD, 14));
-        label.setForeground(new Color(64, 140, 255));
-        label.setAlignmentX(LEFT_ALIGNMENT);
-        return label;
-    }
+    
     private JPanel buildQualityTypePanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
         panel.setBackground(new Color(20, 25, 40));

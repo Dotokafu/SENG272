@@ -4,20 +4,15 @@ import model.AppState;
 import javax.swing.*;
 import java.awt.*;
 
-public class Step1ProfilePanel extends JPanel {
-    private AppState appState;
-    private MainFrame mainFrame;
+public class Step1ProfilePanel extends BaseStepPanel {
+   
 
     private JTextField usernameField;
     private JTextField schoolField;
     private JTextField sessionField;
 
     public Step1ProfilePanel(AppState appState, MainFrame mainFrame) {
-        this.appState = appState;
-        this.mainFrame = mainFrame;
-
-        setBackground(new Color(20, 25, 40));
-        setLayout(new GridBagLayout());
+        super(appState, mainFrame);
 
         JPanel card = buildCard();
         add(card);

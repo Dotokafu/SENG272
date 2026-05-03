@@ -11,17 +11,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class Step4CollectPanel extends JPanel {
+public class Step4CollectPanel extends BaseStepPanel {
 
-    private AppState appState;
-    private MainFrame mainFrame;
+    
     private JPanel contentPanel;
 
     public Step4CollectPanel(AppState appState, MainFrame mainFrame) {
-        this.appState = appState;
-        this.mainFrame = mainFrame;
-        setBackground(new Color(20, 25, 40));
-        setLayout(new BorderLayout());
+        super(appState, mainFrame);
         buildUI();
     }
      private void buildUI() {
@@ -192,12 +188,7 @@ public class Step4CollectPanel extends JPanel {
         block.add(sp, BorderLayout.CENTER);
         return block;
     }
-     private Color getScoreColor(double score) {
-        if (score >= 4.0) return new Color(50, 200, 100);
-        if (score >= 3.0) return new Color(0, 200, 180);
-        if (score >= 2.0) return new Color(255, 180, 50);
-        return new Color(220, 70, 70);
-    }
+    
     private void styleTable(JTable table) {
         table.setBackground(new Color(30, 35, 55));
         table.setForeground(Color.WHITE);

@@ -9,17 +9,13 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.util.List;
 
-public class Step5AnalysePanel extends JPanel {
+public class Step5AnalysePanel extends BaseStepPanel {
 
-    private AppState appState;
-    private MainFrame mainFrame;
+    
     private JPanel contentPanel;
 
     public Step5AnalysePanel(AppState appState, MainFrame mainFrame) {
-        this.appState = appState;
-        this.mainFrame = mainFrame;
-        setBackground(new Color(20, 25, 40));
-        setLayout(new BorderLayout());
+        super(appState, mainFrame);
         buildUI();
     }
     private void buildUI() {
@@ -82,13 +78,7 @@ public class Step5AnalysePanel extends JPanel {
         contentPanel.revalidate();
         contentPanel.repaint();
     }
-    private JLabel makeSectionLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setFont(new Font("Arial", Font.BOLD, 15));
-        label.setForeground(new Color(64, 140, 255));
-        label.setAlignmentX(LEFT_ALIGNMENT);
-        return label;
-    }
+   
     private JPanel buildDimensionScores(Scenario scenario) {
         JPanel panel = new JPanel();
         panel.setBackground(new Color(30, 35, 55));
@@ -209,18 +199,7 @@ public class Step5AnalysePanel extends JPanel {
 
         return panel;
     }
-    private Color getScoreColor(double score) {
-        if (score >= 4.0) return new Color(50, 200, 100);
-        if (score >= 3.0) return new Color(0, 200, 180);
-        if (score >= 2.0) return new Color(255, 180, 50);
-        return new Color(220, 70, 70);
-    }
-    private String getQualityLabel(double score) {
-        if (score >= 4.5) return "Excellent";
-        if (score >= 3.5) return "Good";
-        if (score >= 2.5) return "Needs Improvement";
-        return "Poor";
-    }
+  
     private JPanel buildNavButtons() {
         JPanel nav = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 12));
         nav.setBackground(new Color(20, 25, 40));
@@ -250,5 +229,5 @@ public class Step5AnalysePanel extends JPanel {
         nav.add(backBtn);
         nav.add(restartBtn);
         return nav;
-    }
+    }   
 }
