@@ -21,6 +21,7 @@ public class Step2DefinePanel extends BaseStepPanel {
     private ButtonGroup modeGroup;
     private JRadioButton rbHealth;
     private JRadioButton rbEducation;
+    private JRadioButton rbCustom;
 
     private ButtonGroup scenarioGroup;
     private JPanel scenarioButtonPanel;
@@ -105,13 +106,16 @@ public class Step2DefinePanel extends BaseStepPanel {
         modeGroup = new ButtonGroup();
         rbHealth    = makeRadioButton("Health",    "Health management system", modeGroup);
         rbEducation = makeRadioButton("Education", "Education LMS system",     modeGroup);
+        rbCustom    = makeRadioButton("Custom",    "Define your own metrics",  modeGroup);
         rbHealth.setSelected(true);
 
         rbHealth.addActionListener(e -> refreshScenarios());
         rbEducation.addActionListener(e -> refreshScenarios());
+        rbCustom.addActionListener(e -> refreshScenarios());
 
         panel.add(wrapInCard(rbHealth));
         panel.add(wrapInCard(rbEducation));
+        panel.add(wrapInCard(rbCustom));
         return panel;
     }
     private JRadioButton makeRadioButton(String text, String desc, ButtonGroup group) {
@@ -146,6 +150,18 @@ public class Step2DefinePanel extends BaseStepPanel {
             }
         }
         scenarioGroup = new ButtonGroup();
+
+         if (rbCustom.isSelected()) {
+        JLabel msg = new JLabel(
+            "You will define your own dimensions and metrics in the next screen.");
+        msg.setFont(new Font("Arial", Font.ITALIC, 13));
+        msg.setForeground(new Color(150, 160, 180));
+        msg.setAlignmentX(LEFT_ALIGNMENT);
+        scenarioButtonPanel.add(msg);
+        scenarioButtonPanel.revalidate();
+        scenarioButtonPanel.repaint();
+        return;
+    }
 
         String mode = rbEducation.isSelected() ? "Education" : "Health";
         List<Scenario> scenarios = ScenarioRepository.getScenariosForMode(mode);
@@ -220,8 +236,22 @@ public class Step2DefinePanel extends BaseStepPanel {
         String qType = rbProduct.isSelected() ? "Product" : "Process";
         appState.setSelectedQualityType(qType);
 
-        String mode = rbEducation.isSelected() ? "Education" : "Health";
+        String mode ;
+        if (rbCustom.isSelected()) {
+            mode = "Custom";
+        }
+        else if(rbEducation.isSelected()){
+            mode="Education";
+        }
+        else{
+            mode="Health";
+        }
         appState.setSelectedMode(mode);
+
+         if (rbCustom.isSelected()) {
+        mainFrame.navigateTo(6);
+        return;
+    }
 
         // Find selected scenario
         Scenario selected = null;

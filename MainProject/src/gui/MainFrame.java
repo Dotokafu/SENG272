@@ -17,6 +17,7 @@ public class MainFrame extends JFrame {
     private Step3PlanPanel step3;
     private Step4CollectPanel step4;
     private Step5AnalysePanel step5;
+    private CustomScenarioPanel customPanel;
 
     public MainFrame() {
         appState = new AppState();
@@ -41,12 +42,14 @@ public class MainFrame extends JFrame {
         step3 = new Step3PlanPanel(appState, this);
         step4 = new Step4CollectPanel(appState, this);
         step5 = new Step5AnalysePanel(appState, this);
+        customPanel = new CustomScenarioPanel(appState, this);
 
         cardPanel.add(step1, "1");
         cardPanel.add(step2, "2");
         cardPanel.add(step3, "3");
         cardPanel.add(step4, "4");
         cardPanel.add(step5, "5");
+        cardPanel.add(customPanel, "6");
 
         add(cardPanel, BorderLayout.CENTER);
 
@@ -59,6 +62,7 @@ public class MainFrame extends JFrame {
         if (step == 3) step3.onShow();
         if (step == 4) step4.onShow();
         if (step == 5) step5.onShow();
+        if (step == 6) customPanel.onShow();
 
         stepIndicator.setCurrentStep(step);
         cardLayout.show(cardPanel, String.valueOf(step));
