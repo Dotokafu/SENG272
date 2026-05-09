@@ -7,7 +7,6 @@ import model.Scenario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.List;
 

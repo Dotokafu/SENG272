@@ -55,11 +55,7 @@ public class StepIndicatorPanel extends JPanel {
             else             g2.setColor(new Color(70, 70, 70));
             g2.fillOval(cx - r, cy, r * 2, r * 2);
 
-            // Number or checkmark
-            g2.setColor(Color.WHITE);
-            g2.setFont(new Font("Arial", Font.BOLD, 12));
-            FontMetrics fm = g2.getFontMetrics();
-      
+           
             if (done) {
             // Draw checkmark manually using lines
             g2.setColor(Color.WHITE);
@@ -71,10 +67,10 @@ public class StepIndicatorPanel extends JPanel {
         } else {
             g2.setColor(Color.WHITE);
             g2.setFont(new Font("Arial", Font.BOLD, 12));
-            FontMetrics fm3 = g2.getFontMetrics();
+            FontMetrics fm = g2.getFontMetrics();
             String label = String.valueOf(i + 1);
-            int tx = cx - fm3.stringWidth(label) / 2;
-            int ty = cy + r + (fm3.getAscent() - fm3.getDescent()) / 2;
+            int tx = cx - fm.stringWidth(label) / 2;
+            int ty = cy + r + (fm.getAscent() - fm.getDescent()) / 2;
             g2.drawString(label, tx, ty);
         }
 

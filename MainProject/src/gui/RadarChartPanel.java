@@ -4,7 +4,6 @@ import model.Scenario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.*;
 import java.util.List;
 
 public class RadarChartPanel extends JPanel {
