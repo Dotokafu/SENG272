@@ -106,7 +106,8 @@ public class CustomScenarioPanel extends BaseStepPanel {
         String name  = dimNameField.getText().trim();
         String coeff = dimCoeffField.getText().trim();
 
-        if (name.isEmpty() || coeff.isEmpty()) {
+        if (name.isEmpty() || name.equals("Dimension name e.g. Usability")
+             || coeff.isEmpty() || coeff.equals("Coefficient e.g. 25")) {
             JOptionPane.showMessageDialog(this,
                 "Please enter both dimension name and coefficient.",
                 "Missing Information", JOptionPane.WARNING_MESSAGE);
@@ -130,8 +131,10 @@ public class CustomScenarioPanel extends BaseStepPanel {
         customDimensions.add(dim);
 
         // Clear fields
-        dimNameField.setText("");
-        dimCoeffField.setText("");
+        dimNameField.setText("Dimension name e.g. Usability");
+        dimNameField.setForeground(new Color(150, 160, 180));
+        dimCoeffField.setText("Coefficent e.g. 25");
+        dimCoeffField.setForeground(new Color(150, 160, 180));
 
         refreshDimensionList();
     }
@@ -164,18 +167,19 @@ public class CustomScenarioPanel extends BaseStepPanel {
                 lbl.setForeground(Color.WHITE);
 
                 // Remove button
-                JButton removeBtn = new JButton("✕");
-                removeBtn.setFont(new Font("Arial", Font.BOLD, 11));
+                JLabel removeBtn = new JLabel("X",SwingConstants.CENTER);
+                removeBtn.setFont(new Font("Arial", Font.BOLD, 12));
                 removeBtn.setBackground(new Color(220, 70, 70));
                 removeBtn.setForeground(Color.WHITE);
-                removeBtn.setFocusPainted(false);
-                removeBtn.setBorderPainted(false);
+                removeBtn.setOpaque(true);
                 removeBtn.setPreferredSize(new java.awt.Dimension(36, 26));
                 removeBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                 final int index = i;
-                removeBtn.addActionListener(e -> {
+                removeBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent e) {
                     customDimensions.remove(index);
                     refreshDimensionList();
+                     }
                 });
 
                 row.add(lbl);
@@ -189,7 +193,8 @@ public class CustomScenarioPanel extends BaseStepPanel {
         dimensionListPanel.repaint();
     }
     private JTextField makeInputField(String placeholder, int width) {
-        JTextField field = new JTextField(placeholder);
+        JTextField field = new JTextField();
+        field.setText(placeholder);
         field.setFont(new Font("Arial", Font.PLAIN, 13));
         field.setForeground(new Color(150, 160, 180));
         field.setBackground(new Color(20, 25, 40));
