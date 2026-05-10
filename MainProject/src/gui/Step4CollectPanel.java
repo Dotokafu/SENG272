@@ -49,6 +49,9 @@ public class Step4CollectPanel extends BaseStepPanel {
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setBorder(null);
         scrollPane.getViewport().setBackground(new Color(20, 25, 40));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane, BorderLayout.CENTER);
 
         add(buildNavButtons(), BorderLayout.SOUTH);
@@ -184,7 +187,14 @@ public class Step4CollectPanel extends BaseStepPanel {
         sp.getViewport().setBackground(new Color(30, 35, 55));
         sp.setPreferredSize(new java.awt.Dimension(Integer.MAX_VALUE, height));
         sp.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, height));
-
+        sp.setWheelScrollingEnabled(false);
+        sp.addMouseWheelListener(e -> {
+            JScrollPane outer = (JScrollPane) SwingUtilities.getAncestorOfClass(
+                JScrollPane.class, sp);
+            if (outer != null) {
+                outer.dispatchEvent(e);
+            }
+        });
         block.add(sp, BorderLayout.CENTER);
         return block;
     }

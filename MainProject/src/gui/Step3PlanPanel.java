@@ -11,7 +11,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import java.awt.Dimension;
 import java.awt.*;
 
 public class Step3PlanPanel extends BaseStepPanel {
@@ -52,6 +51,9 @@ public class Step3PlanPanel extends BaseStepPanel {
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setBorder(null);
         scrollPane.getViewport().setBackground(new Color(20, 25, 40));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         add(scrollPane, BorderLayout.CENTER);
 
         add(buildNavButtons(), BorderLayout.SOUTH);
@@ -172,6 +174,14 @@ public class Step3PlanPanel extends BaseStepPanel {
         sp.getViewport().setBackground(new Color(30, 35, 55));
         sp.setPreferredSize(new Dimension(Integer.MAX_VALUE, height));
         sp.setMaximumSize(new Dimension(Integer.MAX_VALUE, height));
+        sp.setWheelScrollingEnabled(false);
+        sp.addMouseWheelListener(e -> {
+            JScrollPane outer = (JScrollPane) SwingUtilities.getAncestorOfClass(
+                JScrollPane.class, sp);
+            if (outer != null) {
+                outer.dispatchEvent(e);
+            }
+        });
         return sp;
     }
      private void styleTable(JTable table) {
