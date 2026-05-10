@@ -79,6 +79,26 @@ public class ScenarioRepository {
         sD.addDimension(func2);
 
         list.add(sD);
+        // Scenario E – Development Team Process
+        Scenario sE = new Scenario("Scenario E — Dev Team Process", "Process", "Education");
+
+        model.Dimension sprint = new model.Dimension("Sprint Efficiency", 35);
+        sprint.addMetric(new Metric("Velocity",        50, true,  0, 100, "pts/sprint", 72));
+        sprint.addMetric(new Metric("Sprint burndown", 50, true,  0, 100, "%",          85));
+        sE.addDimension(sprint);
+
+    model.Dimension codeQ = new model.Dimension("Code Quality", 35);
+    codeQ.addMetric(new Metric("Code coverage",  50, true,  0, 100, "%",         80));
+    codeQ.addMetric(new Metric("Defect density", 50, false, 0, 20,  "bugs/KLOC", 2.5));
+    sE.addDimension(codeQ);
+
+    model.Dimension collab = new model.Dimension("Team Collaboration", 30);
+    collab.addMetric(new Metric("PR review rate",     50, true, 0, 100, "%", 88));
+    collab.addMetric(new Metric("Meeting attendance", 50, true, 0, 100, "%", 92));
+    sE.addDimension(collab);
+
+    list.add(sE);
+
 
         scenarioMap.put("Education", list);
     }
