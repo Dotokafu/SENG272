@@ -8,7 +8,7 @@ import javax.swing.*;
 import data.ScenarioRepository;
 
 import java.awt.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Step2DefinePanel extends BaseStepPanel {
@@ -94,6 +94,9 @@ public class Step2DefinePanel extends BaseStepPanel {
             "Sprint efficiency, code quality", qualityGroup);
         rbProduct.setSelected(true);
 
+        rbProduct.addActionListener(e -> refreshScenarios());
+        rbProcess.addActionListener(e -> refreshScenarios());
+
         panel.add(wrapInCard(rbProduct));
         panel.add(wrapInCard(rbProcess));
         return panel;
@@ -164,7 +167,16 @@ public class Step2DefinePanel extends BaseStepPanel {
     }
 
         String mode = rbEducation.isSelected() ? "Education" : "Health";
-        List<Scenario> scenarios = ScenarioRepository.getScenariosForMode(mode);
+        List<Scenario> allScenarios = ScenarioRepository.getScenariosForMode(mode);
+        String selectedQType = rbProduct.isSelected() ? "Product" : "Process";
+
+        // Filter scenarios by selected quality type
+        List<Scenario> scenarios = new ArrayList<>();
+        for (Scenario s : allScenarios) {
+            if (s.getQualityType().equals(selectedQType)) {
+                scenarios.add(s);
+            }
+        }
 
         JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 0));
         row.setBackground(new Color(20, 25, 40));
