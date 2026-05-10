@@ -1,9 +1,10 @@
-============================================================
-  ISO/IEC 15939 Measurement Process Simulator
-  Course: Software Project II — Individual Assignment
-============================================================
+
+ # ISO/IEC 15939 Measurement Process Simulator
+ # Course: Software Project II — Individual Assignment
+
 
 Student Name : Unay Şenocak
+
 Student ID   : 202428047
 
 ------------------------------------------------------------
@@ -22,12 +23,14 @@ Student ID   : 202428047
   Open Command Prompt or PowerShell inside the MainProject
   folder:
 
-  cd <path to MainProject folder>
+  cd (path to MainProject folder)
 
   Compile:
+  
   javac -cp src src\model\*.java src\data\*.java src\gui\*.java Main.java
 
   Run:
+  
   java -cp "src;." Main
 
 ------------------------------------------------------------
@@ -35,25 +38,36 @@ Student ID   : 202428047
 ------------------------------------------------------------
 
   Step 1 - Profile  : Enter username, school, session name
+  
   Step 2 - Define   : Select quality type, mode, scenario
+  
   Step 3 - Plan     : View dimensions and metrics (read-only)
+  
   Step 4 - Collect  : View raw data and calculated scores
+  
   Step 5 - Analyse  : View scores, radar chart, gap analysis
+  
 
 ------------------------------------------------------------
   AVAILABLE SCENARIOS
 ------------------------------------------------------------
 
   Health Mode:
+  
     Scenario A - Hospital Portal     (Product Quality)
+    
     Scenario B - Clinic Management   (Process Quality)
 
   Education Mode:
+  
     Scenario C - Team Alpha          (Product Quality)
+    
     Scenario D - Team Beta           (Product Quality)
+    
     Scenario E - Dev Team Process    (Process Quality)
 
   Custom Mode:
+  
     Define your own dimensions and metrics from scratch
 
 ------------------------------------------------------------
