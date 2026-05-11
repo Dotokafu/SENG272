@@ -99,7 +99,7 @@ Student ID   : 202428047
   AI USAGE
 ------------------------------------------------------------
 
-  AI tools were used as a coding assistant during development.
+  AI tools were used as a assistant during development.
   All code was reviewed, understood, and modified by the student.
 
-============================================================
+
