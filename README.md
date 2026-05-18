@@ -90,7 +90,7 @@ Student ID   : 202428047
   - Collections — ArrayList and HashMap used throughout
 
 ------------------------------------------------------------
-  SCREENSHOT
+  SCREENSHOT AND VIDEO
 ------------------------------------------------------------
 
   See screenshots/ folder in the repository.
